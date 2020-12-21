@@ -27,7 +27,7 @@ export const JobList = () => {
       >
         Add Job
       </button>
-      <table class="u-full-width">
+      <table className="u-full-width">
         <thead>
           <tr>
             <th>Job</th>
