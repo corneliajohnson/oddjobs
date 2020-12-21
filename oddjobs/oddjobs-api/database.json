@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Pressure Wash",
-      "jobCateloryId": 1,
+      "jobCategoryId": 1,
       "pay": 400,
       "details": "20 foot driveway",
       "userId": 1,
@@ -16,7 +16,7 @@
     {
       "id": 1,
       "title": "Pressure Wash",
-      "jobCateloryId": 1,
+      "jobCategoryId": 1,
       "price": 400,
       "details": "20 foot driveway",
       "userId": 2,

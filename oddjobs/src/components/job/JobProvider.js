@@ -5,7 +5,7 @@ export const JobProvider = (props) => {
   const [jobs, setJobs] = useState([]);
 
   const getJobs = () => {
-    return fetch("http://localhost:8088/jobs")
+    return fetch("http://localhost:8088/jobs?_expand=jobCategory")
       .then((res) => res.json())
       .then(setJobs);
   };
