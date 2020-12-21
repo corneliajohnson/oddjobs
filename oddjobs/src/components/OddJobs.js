@@ -1,9 +1,11 @@
 import React from "react";
-import { Job } from "./job/Job";
+import { JobList } from "./job/JobList";
+import { JobProvider } from "./job/JobProvider";
 
 export const OddJobs = () => (
   <>
-    <h2>Open Jobs</h2>
-    <Job />
+    <JobProvider>
+      <JobList />
+    </JobProvider>
   </>
 );
