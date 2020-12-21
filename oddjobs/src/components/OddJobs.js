@@ -1,11 +1,10 @@
 import React from "react";
-import { JobList } from "./job/JobList";
-import { JobProvider } from "./job/JobProvider";
+import { NavBar } from "./nav/NavBar";
+import { ApplicationViews } from "./ApplicationViews";
 
 export const OddJobs = () => (
   <>
-    <JobProvider>
-      <JobList />
-    </JobProvider>
+    <NavBar />
+    <ApplicationViews />
   </>
 );

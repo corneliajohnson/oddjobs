@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { OddJobs } from "./components/OddJobs";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <OddJobs />
+    <Router>
+      <OddJobs />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

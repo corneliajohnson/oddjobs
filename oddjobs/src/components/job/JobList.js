@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { JobContext } from "./JobProvider";
 import { Job } from "./Job";
+import { useHistory } from "react-router-dom";
 
 export const JobList = () => {
   const { jobs, getJobs } = useContext(JobContext);
+
+  const history = useHistory();
 
   useEffect(() => {
     getJobs();
@@ -17,6 +20,13 @@ export const JobList = () => {
   return (
     <div className="jobs">
       <h2>Open Jobs</h2>
+      <button
+        onClick={() => {
+          history.push("/jobs/create");
+        }}
+      >
+        Add Job
+      </button>
       <table class="u-full-width">
         <thead>
           <tr>
