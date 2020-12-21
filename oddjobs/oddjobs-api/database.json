@@ -1,0 +1,190 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Pressure Wash",
+      "jobCateloryId": 1,
+      "pay": 400,
+      "details": "20 foot driveway",
+      "userId": 1,
+      "zipCode": 34356,
+      "visible": true,
+      "Posted": "2020-10-15"
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Pressure Wash",
+      "jobCateloryId": 1,
+      "price": 400,
+      "details": "20 foot driveway",
+      "userId": 2,
+      "zipCode": 34356,
+      "serviceRadius": 15,
+      "visible": true,
+      "Posted": "2020-10-15"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "sender": 2,
+      "reciever": 1,
+      "text": "hello",
+      "sent": "2020-10-15"
+    }
+  ],
+  "jobCategories": [
+    {
+      "id": 1,
+      "name": "accounting/finance"
+    },
+    {
+      "id": 2,
+      "name": "admin/office"
+    },
+    {
+      "id": 3,
+      "name": " architect/engineer/cad"
+    },
+    {
+      "id": 4,
+      "name": "art/media/design"
+    },
+    {
+      "id": 5,
+      "name": "business/mgmt"
+    },
+    {
+      "id": 6,
+      "name": "accounting/finance"
+    },
+    {
+      "id": 7,
+      "name": "customer service"
+    },
+    {
+      "id": 8,
+      "name": "education/teaching"
+    },
+    {
+      "id": 9,
+      "name": " food/beverage/hospitality"
+    },
+    {
+      "id": 10,
+      "name": "general labor"
+    },
+    {
+      "id": 11,
+      "name": "healthcare"
+    },
+    {
+      "id": 12,
+      "name": "human resource"
+    },
+    {
+      "id": 13,
+      "name": " legal/paralegal"
+    },
+    {
+      "id": 14,
+      "name": "accounting/finance"
+    },
+    {
+      "id": 15,
+      "name": "manufacturing"
+    },
+    {
+      "id": 16,
+      "name": "marketing/advertising/pr"
+    },
+    {
+      "id": 17,
+      "name": "nonprofit"
+    },
+    {
+      "id": 18,
+      "name": "manufacturing"
+    },
+    {
+      "id": 19,
+      "name": "real estate"
+    },
+    {
+      "id": 20,
+      "name": "retail/wholesale"
+    },
+    {
+      "id": 21,
+      "name": "sales"
+    },
+    {
+      "id": 22,
+      "name": "salon/spa/fitness"
+    },
+    {
+      "id": 23,
+      "name": "science/biotech"
+    },
+    {
+      "id": 24,
+      "name": "security"
+    },
+    {
+      "id": 25,
+      "name": "skilled trades/artisan"
+    },
+    {
+      "id": 26,
+      "name": "software/qa/dba/etc"
+    },
+    {
+      "id": 27,
+      "name": "systems/networking"
+    },
+    {
+      "id": 28,
+      "name": "technical support"
+    },
+    {
+      "id": 29,
+      "name": " transportation"
+    },
+    {
+      "id": 30,
+      "name": " tv/film/video/radio"
+    },
+    {
+      "id": 31,
+      "name": "volunteer"
+    },
+    {
+      "id": 32,
+      "name": "web/html/info design"
+    },
+    {
+      "id": 33,
+      "name": "writing/editing"
+    }
+  ],
+  "users": {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Smith",
+    "userName": "jd",
+    "email": "john@gmail.com",
+    "image": null,
+    "zipCode": 32301
+  },
+  {
+    "id": 1,
+    "firstName": "Sue",
+    "lastName": "Blank",
+    "userName": "sb",
+    "email": "sue@gmail.com",
+    "image": null,
+    "zipCode": 32305
+  }
+}
