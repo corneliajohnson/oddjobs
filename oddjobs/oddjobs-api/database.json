@@ -169,22 +169,24 @@
       "name": "writing/editing"
     }
   ],
-  "users": {
-    "id": 1,
-    "firstName": "John",
-    "lastName": "Smith",
-    "userName": "jd",
-    "email": "john@gmail.com",
-    "image": null,
-    "zipCode": 32301
-  },
-  {
-    "id": 1,
-    "firstName": "Sue",
-    "lastName": "Blank",
-    "userName": "sb",
-    "email": "sue@gmail.com",
-    "image": null,
-    "zipCode": 32305
-  }
+  "users": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Smith",
+      "userName": "jd",
+      "email": "john@gmail.com",
+      "image": null,
+      "zipCode": 32301
+    },
+    {
+      "id": 1,
+      "firstName": "Sue",
+      "lastName": "Blank",
+      "userName": "sb",
+      "email": "sue@gmail.com",
+      "image": null,
+      "zipCode": 32305
+    }
+  ]
 }
