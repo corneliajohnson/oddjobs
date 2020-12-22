@@ -1,16 +1,23 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { JobContext } from "./JobProvider";
 import { Job } from "./Job";
 import { useHistory } from "react-router-dom";
 
 export const JobList = () => {
   const { jobs, getJobs } = useContext(JobContext);
+  const [visibleJobs, setVisibleJobs] = useState([]);
 
   const history = useHistory();
 
   useEffect(() => {
     getJobs();
   }, []);
+
+  //only show visable jobs
+  useEffect(() => {
+    const filteredVisibleJobs = jobs.filter((job) => job.visible === true);
+    setVisibleJobs(filteredVisibleJobs);
+  }, [jobs]);
 
   return (
     <div className="jobs">
@@ -32,7 +39,7 @@ export const JobList = () => {
           </tr>
         </thead>
         <tbody>
-          {jobs.map((job) => (
+          {visibleJobs.map((job) => (
             <Job key={job.id} job={job} />
           ))}
         </tbody>
