@@ -13,7 +13,7 @@
     },
     {
       "title": "Build A Website",
-      "jobCategoryId": "26",
+      "jobCategoryId": 26,
       "pay": "&15/hr",
       "details": "build a website for my lawn service",
       "userId": 1,
@@ -24,7 +24,7 @@
     },
     {
       "title": "Grass Cut",
-      "jobCategoryId": "10",
+      "jobCategoryId": 10,
       "pay": "60",
       "details": "Quater Acre",
       "userId": 1,

@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { JobContext } from "./JobProvider";
 import { CategoryContext } from "../category/CategoryProvider";
 import { useHistory, useParams } from "react-router-dom";
+//import SimpleReactValidator from "simple-react-validator";
 
 export const JobForm = () => {
   const { addJob, getJobById, editJob } = useContext(JobContext);
@@ -28,20 +29,24 @@ export const JobForm = () => {
   };
 
   const handleJob = () => {
-    //setIsLoading(true);
-    if (jobId) {
+    if (job.jobCategoryId !== "0") {
+      window.alert("Please select a job category");
     } else {
-      //POST - add
-      addJob({
-        title: job.title,
-        jobCategoryId: job.jobCategoryId,
-        pay: job.pay,
-        details: job.details,
-        userId: 1,
-        zipCode: job.zipCode,
-        visible: checked,
-        posted: Date.now(),
-      }).then(() => history.push("/"));
+      if (jobId) {
+        //setIsLoading(true);
+      } else {
+        //POST - add
+        addJob({
+          title: job.title,
+          jobCategoryId: job.jobCategoryId,
+          pay: job.pay,
+          details: job.details,
+          userId: 1,
+          zipCode: job.zipCode,
+          visible: checked,
+          posted: Date.now(),
+        }).then(() => history.push("/"));
+      }
     }
   };
 
@@ -70,6 +75,8 @@ export const JobForm = () => {
               type="text"
               id="jobTitle"
               name="title"
+              maxLength="50"
+              value={job.title}
               required
               autoFocus
             />
@@ -81,6 +88,7 @@ export const JobForm = () => {
               onClick={handleClick}
               name="jobCategoryId"
               id="jobCatelory"
+              value={job.jobCategoryId}
               required
             >
               <option value="0">Select a Catelory</option>
@@ -100,6 +108,8 @@ export const JobForm = () => {
               type="text"
               id="jobPay"
               name="pay"
+              maxLength="50"
+              value={job.pay}
               required
               autoFocus
             />
@@ -111,6 +121,8 @@ export const JobForm = () => {
               type="text"
               id="zipCode"
               name="zipCode"
+              maxLength="5"
+              value={job.zipCode}
               required
               autoFocus
             />
@@ -121,7 +133,6 @@ export const JobForm = () => {
               onChange={handleClick}
               id="visible"
               name="visible"
-              required
               autoFocus
               type="checkbox"
               checked={checked}
@@ -136,13 +147,17 @@ export const JobForm = () => {
             placeholder="Decription of job"
             id="details"
             name="details"
+            value={job.details}
+            required
           ></textarea>
         </div>
         <input
           //disabled={isLoading}
           onClick={(event) => {
-            event.preventDefault();
-            handleJob();
+            if (job.title && job.pay && job.zipCode) {
+              event.preventDefault();
+              handleJob();
+            }
           }}
           className="button-primary"
           type="submit"
