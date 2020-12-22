@@ -20,5 +20,13 @@ export const ApplicationViews = () => (
         </Route>
       </JobProvider>
     </CategoryProvider>
+
+    <CategoryProvider>
+      <JobProvider>
+        <Route exact path="/jobs/edit/:jobId(\d+)">
+          <JobForm />
+        </Route>
+      </JobProvider>
+    </CategoryProvider>
   </>
 );
