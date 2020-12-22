@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Pressure Wash",
       "jobCategoryId": 1,
-      "pay": 400,
+      "pay": "400",
       "details": "20 foot driveway",
       "userId": 1,
       "zipCode": 34356,
@@ -17,7 +17,7 @@
       "id": 1,
       "title": "Pressure Wash",
       "jobCategoryId": 1,
-      "price": 400,
+      "price": "400",
       "details": "20 foot driveway",
       "userId": 2,
       "zipCode": 34356,
@@ -180,7 +180,7 @@
       "zipCode": 32301
     },
     {
-      "id": 1,
+      "id": 2,
       "firstName": "Sue",
       "lastName": "Blank",
       "userName": "sb",

@@ -11,7 +11,7 @@ export const JobForm = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [checked, setChecked] = useState(true);
   const handleClick = () => {
-    if (checked == true) {
+    if (checked === true) {
       setChecked(false);
     } else {
       setChecked(true);
@@ -32,17 +32,16 @@ export const JobForm = () => {
     if (jobId) {
     } else {
       //POST - add
-      console.log({
+      addJob({
         title: job.title,
         jobCategoryId: job.jobCategoryId,
-        pay: checked,
+        pay: job.pay,
         details: job.details,
         userId: 1,
         zipCode: job.zipCode,
-        visible: job.visible,
+        visible: checked,
         posted: Date.now(),
-      });
-      //.then(() => history.push("/"));
+      }).then(() => history.push("/"));
     }
   };
 
@@ -96,15 +95,22 @@ export const JobForm = () => {
         <div className="row">
           <div className="four columns">
             <label htmlFor="">Pay</label>
-            <input type="number" id="jobPay" name="pay" required autoFocus />
+            <input
+              onChange={handleControlledInputChange}
+              type="text"
+              id="jobPay"
+              name="pay"
+              required
+              autoFocus
+            />
           </div>
           <div className="four columns">
             <label htmlFor="">Zip Code</label>
             <input
               onChange={handleControlledInputChange}
               type="text"
-              id="pay"
-              name="pay"
+              id="zipCode"
+              name="zipCode"
               required
               autoFocus
             />
@@ -112,7 +118,7 @@ export const JobForm = () => {
           <div className="four columns">
             <label htmlFor="">Visible</label>
             <input
-              onClick={handleClick}
+              onChange={handleClick}
               id="visible"
               name="visible"
               required

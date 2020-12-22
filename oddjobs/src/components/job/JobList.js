@@ -12,11 +12,6 @@ export const JobList = () => {
     getJobs();
   }, []);
 
-  useEffect(() => {
-    console.log("JobList: Location state changed");
-    console.log(jobs);
-  }, [jobs]);
-
   return (
     <div className="jobs">
       <h2>Open Jobs</h2>
