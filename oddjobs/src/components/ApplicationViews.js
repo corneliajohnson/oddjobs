@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import { JobList } from "./job/JobList";
 import { JobProvider } from "./job/JobProvider";
 import { JobForm } from "./job/JobForm";
+import { CategoryProvider } from "./category/CategoryProvider";
 
 export const ApplicationViews = () => (
   <>
@@ -12,10 +13,12 @@ export const ApplicationViews = () => (
       </Route>
     </JobProvider>
 
-    <JobProvider>
-      <Route exact path="/jobs/create">
-        <JobForm />
-      </Route>
-    </JobProvider>
+    <CategoryProvider>
+      <JobProvider>
+        <Route exact path="/jobs/create">
+          <JobForm />
+        </Route>
+      </JobProvider>
+    </CategoryProvider>
   </>
 );

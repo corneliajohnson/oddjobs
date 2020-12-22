@@ -1,12 +1,22 @@
 import React, { useContext, useState, useEffect } from "react";
 import { JobContext } from "./JobProvider";
+import { CategoryContext } from "../category/CategoryProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 export const JobForm = () => {
   const { addJob, getJobById, editJob } = useContext(JobContext);
+  const { categories, getCategories } = useContext(CategoryContext);
 
   const [job, setJob] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [checked, setChecked] = useState(true);
+  const handleClick = () => {
+    if (checked == true) {
+      setChecked(false);
+    } else {
+      setChecked(true);
+    }
+  };
 
   const { jobId } = useParams();
   const history = useHistory();
@@ -25,11 +35,11 @@ export const JobForm = () => {
       console.log({
         title: job.title,
         jobCategoryId: job.jobCategoryId,
-        pay: job.pay,
+        pay: checked,
         details: job.details,
         userId: 1,
         zipCode: job.zipCode,
-        visible: true,
+        visible: job.visible,
         posted: Date.now(),
       });
       //.then(() => history.push("/"));
@@ -37,14 +47,16 @@ export const JobForm = () => {
   };
 
   useEffect(() => {
-    if (jobId) {
-      getJobById(jobId).then((job) => {
-        setJob(job);
-        setIsLoading(false);
-      });
-    } else {
-      setIsLoading(true);
-    }
+    getCategories().then(() => {
+      if (jobId) {
+        getJobById(jobId).then((job) => {
+          setJob(job);
+          setIsLoading(false);
+        });
+      } else {
+        setIsLoading(true);
+      }
+    });
   }, []);
 
   return (
@@ -65,14 +77,20 @@ export const JobForm = () => {
           </div>
           <div className="six columns">
             <label htmlFor="">Category</label>
-            <input
+            <select
               onChange={handleControlledInputChange}
-              type="text"
-              id="jobCatelory"
+              onClick={handleClick}
               name="jobCategoryId"
+              id="jobCatelory"
               required
-              autoFocus
-            />
+            >
+              <option value="0">Select a Catelory</option>
+              {categories.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="row">
@@ -94,12 +112,13 @@ export const JobForm = () => {
           <div className="four columns">
             <label htmlFor="">Visible</label>
             <input
-              onChange={handleControlledInputChange}
-              type="text"
+              onClick={handleClick}
               id="visible"
               name="visible"
               required
               autoFocus
+              type="checkbox"
+              checked={checked}
             />
           </div>
         </div>
