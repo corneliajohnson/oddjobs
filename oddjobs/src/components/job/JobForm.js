@@ -17,8 +17,22 @@ export const JobForm = () => {
   };
 
   const handleJob = () => {
-    //POST - add
-    addJob({}).then(() => history.push("/"));
+    setIsLoading(true);
+    if (job.id) {
+    } else {
+      //POST - add
+      console.log({
+        title: job.title,
+        jobCategoryId: job.jobCategoryId,
+        pay: job.pay,
+        details: job.details,
+        userId: 1,
+        zipCode: job.zipCode,
+        visible: true,
+        posted: Date.now(),
+      });
+      //.then(() => history.push("/"));
+    }
   };
 
   return (
@@ -51,7 +65,7 @@ export const JobForm = () => {
             <input
               type="text"
               id="jobCatelory"
-              name="jobCateloryId"
+              name="jobCategoryId"
               required
               autoFocus
             />
@@ -70,7 +84,15 @@ export const JobForm = () => {
             name="details"
           ></textarea>
         </div>
-        <input class="button-primary" type="submit" value="Submit"></input>
+        <input
+          onClick={(event) => {
+            event.preventDefault();
+            handleJob();
+          }}
+          className="button-primary"
+          type="submit"
+          value="Submit"
+        ></input>
       </form>
     </div>
   );
