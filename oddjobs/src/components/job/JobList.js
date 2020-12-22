@@ -36,6 +36,7 @@ export const JobList = () => {
             <th>Category</th>
             <th>Pay</th>
             <th>Location</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
