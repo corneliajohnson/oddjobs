@@ -3,11 +3,12 @@ import { JobContext } from "./JobProvider";
 import { useHistory, useParams } from "react-router-dom";
 
 export const JobForm = () => {
-  const { addJob } = useContext(JobContext);
+  const { addJob, getJobById, editJob } = useContext(JobContext);
 
   const [job, setJob] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const { jobId } = useParams();
   const history = useHistory();
 
   const handleControlledInputChange = (event) => {
@@ -17,8 +18,8 @@ export const JobForm = () => {
   };
 
   const handleJob = () => {
-    setIsLoading(true);
-    if (job.id) {
+    //setIsLoading(true);
+    if (jobId) {
     } else {
       //POST - add
       console.log({
@@ -35,6 +36,17 @@ export const JobForm = () => {
     }
   };
 
+  useEffect(() => {
+    if (jobId) {
+      getJobById(jobId).then((job) => {
+        setJob(job);
+        setIsLoading(false);
+      });
+    } else {
+      setIsLoading(true);
+    }
+  }, []);
+
   return (
     <div className="container">
       <h4>Add New Job</h4>
@@ -42,14 +54,22 @@ export const JobForm = () => {
         <div className="row">
           <div className="six columns">
             <label htmlFor="">Title</label>
-            <input type="text" id="jobTitle" name="title" required autoFocus />
+            <input
+              onChange={handleControlledInputChange}
+              type="text"
+              id="jobTitle"
+              name="title"
+              required
+              autoFocus
+            />
           </div>
           <div className="six columns">
             <label htmlFor="">Category</label>
             <input
+              onChange={handleControlledInputChange}
               type="text"
               id="jobCatelory"
-              name="jobCateloryId"
+              name="jobCategoryId"
               required
               autoFocus
             />
@@ -63,21 +83,30 @@ export const JobForm = () => {
           <div className="four columns">
             <label htmlFor="">Zip Code</label>
             <input
+              onChange={handleControlledInputChange}
               type="text"
-              id="jobCatelory"
-              name="jobCategoryId"
+              id="pay"
+              name="pay"
               required
               autoFocus
             />
           </div>
           <div className="four columns">
             <label htmlFor="">Visible</label>
-            <input type="text" id="visible" name="visible" required autoFocus />
+            <input
+              onChange={handleControlledInputChange}
+              type="text"
+              id="visible"
+              name="visible"
+              required
+              autoFocus
+            />
           </div>
         </div>
         <div className="row">
           <label htmlFor="">Details</label>
           <textarea
+            onChange={handleControlledInputChange}
             className="u-full-width"
             placeholder="Decription of job"
             id="details"
@@ -85,6 +114,7 @@ export const JobForm = () => {
           ></textarea>
         </div>
         <input
+          //disabled={isLoading}
           onClick={(event) => {
             event.preventDefault();
             handleJob();
