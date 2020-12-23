@@ -10,6 +10,7 @@ import { DeleteJob } from "./DeleteJob";
 export const JobList = () => {
   const { jobs, getJobs } = useContext(JobContext);
   const [visibleJobs, setVisibleJobs] = useState([]);
+  const currentUser = localStorage.getItem("user");
 
   const history = useHistory();
 

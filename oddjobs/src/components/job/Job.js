@@ -9,8 +9,13 @@ export const Job = ({ job, editBtn, deleteBtn }) => (
     <td>{job.jobCategory.name}</td>
     <td>{job.pay}</td>
     <td>{job.zipCode}</td>
-    <td>
-      {editBtn} {deleteBtn}
-    </td>
+    {/* only show delete and edit for current user */}
+    {job.userId === parseInt(localStorage.getItem("user")) ? (
+      <td>
+        {editBtn} {deleteBtn}
+      </td>
+    ) : (
+      <td></td>
+    )}
   </tr>
 );

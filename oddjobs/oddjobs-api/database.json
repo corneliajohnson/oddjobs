@@ -32,6 +32,17 @@
       "visible": false,
       "posted": 1608643002430,
       "id": 3
+    },
+    {
+      "title": "Test",
+      "jobCategoryId": 10,
+      "pay": "60",
+      "details": "Quater Acre",
+      "userId": 2,
+      "zipCode": "32305",
+      "visible": true,
+      "posted": 1608643002430,
+      "id": 4
     }
   ],
   "services": [
