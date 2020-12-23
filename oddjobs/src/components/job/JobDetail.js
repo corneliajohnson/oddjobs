@@ -5,7 +5,6 @@ import { JobContext } from "./JobProvider";
 export const JobDetail = () => {
   const { getJobById } = useContext(JobContext);
   const [job, setJob] = useState({});
-  const [category, setCategory] = useState({});
   const { jobId } = useParams();
   const history = useHistory();
 
@@ -16,13 +15,16 @@ export const JobDetail = () => {
   }, []);
 
   return (
-    <section className="job">
+    <section className="job container">
       <h3 className="job_title">{job.title}</h3>
-      <div className="col">Posted: {job.posted}</div>
+      <div>Posted: {job.posted}</div>
       <div className="row">
-        <div className="col"> Job Category: {job.jobCategoryId}</div>
-        <div className="col">Pay: {job.pay}</div>
-        <div className="col"> Location: {job.zipCode}</div>
+        <div className="one-third column">
+          {" "}
+          Job Category: {job.jobCategory?.name}
+        </div>
+        <div className="one-third  column">Pay: {job.pay}</div>
+        <div className="one-third column"> Location: {job.zipCode}</div>
       </div>
       <p className="job_details">Details: {job.details}</p>
     </section>

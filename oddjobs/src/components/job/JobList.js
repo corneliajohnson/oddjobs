@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { JobContext } from "./JobProvider";
 import { Job } from "./Job";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export const JobList = () => {
   const { jobs, getJobs } = useContext(JobContext);
@@ -41,7 +44,20 @@ export const JobList = () => {
         </thead>
         <tbody>
           {visibleJobs.map((job) => (
-            <Job key={job.id} job={job} />
+            <Job
+              key={job.id}
+              job={job}
+              editBtn={
+                <Link to={`/jobs/edit/${job.id}`}>
+                  <FontAwesomeIcon icon={faEdit} />
+                </Link>
+              }
+              deleteBtn={
+                <a>
+                  <FontAwesomeIcon icon={faTrash} />
+                </a>
+              }
+            />
           ))}
         </tbody>
       </table>
