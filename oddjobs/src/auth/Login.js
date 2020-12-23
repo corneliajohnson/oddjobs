@@ -1,10 +1,13 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./Login.css";
 
 export const Login = (props) => {
   const email = useRef();
   const existDialog = useRef();
+
+  const history = useHistory();
 
   const existingUserCheck = () => {
     return fetch(`http://localhost:8088/users?email=${email.current.value}`)
@@ -18,7 +21,7 @@ export const Login = (props) => {
     existingUserCheck().then((exists) => {
       if (exists) {
         localStorage.setItem("user", exists.id);
-        props.history.push("/");
+        history.push("/");
       } else if (!exists) {
         existDialog.current.showModal();
       }

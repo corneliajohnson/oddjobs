@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { DeleteJob } from "./DeleteJob";
+import { Redirect } from "react-router-dom";
 
 export const JobList = () => {
   const { jobs, getJobs } = useContext(JobContext);
@@ -29,7 +30,11 @@ export const JobList = () => {
       <h2>Open Jobs</h2>
       <button
         onClick={() => {
-          history.push("/jobs/create");
+          if (currentUser) {
+            history.push("/jobs/create");
+          } else {
+            history.push("/login");
+          }
         }}
       >
         Add Job
