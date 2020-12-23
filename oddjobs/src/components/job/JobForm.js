@@ -29,11 +29,22 @@ export const JobForm = () => {
   };
 
   const handleJob = () => {
-    if (job.jobCategoryId !== "0") {
+    if (job.jobCategoryId === "0") {
       window.alert("Please select a job category");
     } else {
       if (jobId) {
         //setIsLoading(true);
+        editJob({
+          id: jobId,
+          title: job.title,
+          jobCategoryId: job.jobCategoryId,
+          pay: job.pay,
+          details: job.details,
+          userId: 1,
+          zipCode: job.zipCode,
+          visible: checked,
+          posted: Date.now(),
+        }).then(() => history.push("/"));
       } else {
         //POST - add
         addJob({

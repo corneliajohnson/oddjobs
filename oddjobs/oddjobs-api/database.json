@@ -12,15 +12,15 @@
       "posted": 1603230282542
     },
     {
+      "id": 2,
       "title": "Build A Website",
-      "jobCategoryId": 26,
-      "pay": "&15/hr",
-      "details": "build a website for my lawn service",
+      "jobCategoryId": "32",
+      "pay": "$15/hr",
+      "details": "Build a website for my lawn service",
       "userId": 1,
-      "zipCode": "3232",
+      "zipCode": "32320",
       "visible": true,
-      "posted": 1608641899087,
-      "id": 2
+      "posted": 1608740360935
     },
     {
       "title": "Grass Cut",

@@ -33,7 +33,7 @@ export const JobProvider = (props) => {
   };
 
   const editJob = (job) => {
-    return fetch(`http://localhost:8088/jobs/?${job.id}`, {
+    return fetch(`http://localhost:8088/jobs/${job.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
