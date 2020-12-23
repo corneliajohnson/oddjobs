@@ -7,6 +7,7 @@ import { JobDetail } from "./job/JobDetail";
 import { CategoryProvider } from "./category/CategoryProvider";
 import { ServiceProvider } from "./service/ServiceProvider";
 import { ServiceList } from "./service/ServiceList";
+import { ServiceDetail } from "./service/ServiceDetail";
 
 export const ApplicationViews = () => (
   <>
@@ -44,6 +45,14 @@ export const ApplicationViews = () => (
       <CategoryProvider>
         <Route exact path="/services">
           <ServiceList />
+        </Route>
+      </CategoryProvider>
+    </ServiceProvider>
+
+    <ServiceProvider>
+      <CategoryProvider>
+        <Route exact path="/services/detail/:serviceId(\d+)">
+          <ServiceDetail />
         </Route>
       </CategoryProvider>
     </ServiceProvider>
