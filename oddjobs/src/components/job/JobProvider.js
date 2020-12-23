@@ -21,7 +21,9 @@ export const JobProvider = (props) => {
   };
 
   const getJobById = (id) => {
-    return fetch(`http://localhost:8088/jobs/?${id}`).then((res) => res.json());
+    return fetch(
+      `http://localhost:8088/jobs/${id}?_expand=jobCategory`
+    ).then((res) => res.json());
   };
 
   const deleteJob = (id) => {

@@ -10,8 +10,16 @@ export const CategoryProvider = (props) => {
       .then(setCategory);
   };
 
+  const getCategoryById = (id) => {
+    return fetch(`http://localhost:8088/jobcategories/${id}`).then((res) =>
+      res.json()
+    );
+  };
+
   return (
-    <CategoryContext.Provider value={{ categories, getCategories }}>
+    <CategoryContext.Provider
+      value={{ categories, getCategories, getCategoryById }}
+    >
       {props.children}
     </CategoryContext.Provider>
   );
