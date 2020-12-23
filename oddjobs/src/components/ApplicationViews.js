@@ -5,6 +5,8 @@ import { JobProvider } from "./job/JobProvider";
 import { JobForm } from "./job/JobForm";
 import { JobDetail } from "./job/JobDetail";
 import { CategoryProvider } from "./category/CategoryProvider";
+import { ServiceProvider } from "./service/ServiceProvider";
+import { ServiceList } from "./service/ServiceList";
 
 export const ApplicationViews = () => (
   <>
@@ -37,5 +39,13 @@ export const ApplicationViews = () => (
         </Route>
       </JobProvider>
     </CategoryProvider>
+
+    <ServiceProvider>
+      <CategoryProvider>
+        <Route exact path="/services">
+          <ServiceList />
+        </Route>
+      </CategoryProvider>
+    </ServiceProvider>
   </>
 );
