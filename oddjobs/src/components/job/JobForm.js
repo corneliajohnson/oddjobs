@@ -76,7 +76,7 @@ export const JobForm = () => {
 
   return (
     <div className="container">
-      <h4>Add New Job</h4>
+      <h4>{jobId ? <>Edit Job</> : <>Add New Job</>}</h4>
       <form>
         <div className="row">
           <div className="six columns">

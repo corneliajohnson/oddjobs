@@ -27,7 +27,7 @@ export const JobProvider = (props) => {
   };
 
   const deleteJob = (id) => {
-    return fetch(`http://localhost:8088/jobs/?${id}`, {
+    return fetch(`http://localhost:8088/jobs/${id}`, {
       method: "DELETE",
     }).then(getJobs);
   };
