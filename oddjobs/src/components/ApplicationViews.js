@@ -65,5 +65,13 @@ export const ApplicationViews = () => (
         </Route>
       </CategoryProvider>
     </ServiceProvider>
+
+    <ServiceProvider>
+      <CategoryProvider>
+        <Route exact path="/services/edit/:serviceId(\d+)">
+          <ServiceForm />
+        </Route>
+      </CategoryProvider>
+    </ServiceProvider>
   </>
 );
