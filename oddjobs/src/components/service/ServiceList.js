@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { ServiceContext } from "./ServiceProvider";
 import { useHistory } from "react-router-dom";
 import { Service } from "./Service";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { DeleteService } from "./DeleteService";
 
 export const ServiceList = () => {
   const { services, getServices } = useContext(ServiceContext);
   const [visibleServices, setVisibleServices] = useState([]);
-  const currentUser = localStorage.getItem("user");
 
   const history = useHistory();
 
@@ -40,7 +43,20 @@ export const ServiceList = () => {
           </thead>
           <tbody>
             {visibleServices.map((service) => {
-              return <Service key={service.id} service={service} />;
+              return (
+                <Service
+                  key={service.id}
+                  service={service}
+                  editBtn={
+                    <Link to={`/services/edit/${service.id}`}>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </Link>
+                  }
+                  deleteBtn={
+                    <DeleteService id={service.id} title={service.title} />
+                  }
+                />
+              );
             })}
           </tbody>
         </table>

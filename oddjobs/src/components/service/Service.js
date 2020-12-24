@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Service = ({ service }) => (
+export const Service = ({ service, editBtn, deleteBtn }) => (
   <tr>
     <td>
       <Link to={`/services/detail/${service.id}`}> {service.title}</Link>
@@ -11,7 +11,9 @@ export const Service = ({ service }) => (
     <td>{service.zipCode}</td>
     {/* only show delete and edit for current user */}
     {service.userId === parseInt(localStorage.getItem("user")) ? (
-      <td></td>
+      <td>
+        {editBtn} {deleteBtn}
+      </td>
     ) : (
       <td></td>
     )}

@@ -4,7 +4,7 @@ import { JobContext } from "./JobProvider";
 import { Job } from "./Job";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { DeleteJob } from "./DeleteJob";
 import "./Job.css";
 
