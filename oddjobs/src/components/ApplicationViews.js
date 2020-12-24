@@ -8,6 +8,7 @@ import { CategoryProvider } from "./category/CategoryProvider";
 import { ServiceProvider } from "./service/ServiceProvider";
 import { ServiceList } from "./service/ServiceList";
 import { ServiceDetail } from "./service/ServiceDetail";
+import { ServiceForm } from "./service/ServiceForm";
 
 export const ApplicationViews = () => (
   <>
@@ -53,6 +54,14 @@ export const ApplicationViews = () => (
       <CategoryProvider>
         <Route exact path="/services/detail/:serviceId(\d+)">
           <ServiceDetail />
+        </Route>
+      </CategoryProvider>
+    </ServiceProvider>
+
+    <ServiceProvider>
+      <CategoryProvider>
+        <Route exact path="/services/create">
+          <ServiceForm />
         </Route>
       </CategoryProvider>
     </ServiceProvider>

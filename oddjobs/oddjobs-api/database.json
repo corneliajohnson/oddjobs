@@ -69,6 +69,18 @@
       "serviceRadius": 15,
       "visible": true,
       "posted": 1603230282542
+    },
+    {
+      "title": "ride",
+      "jobCategoryId": "29",
+      "price": "$20",
+      "details": "to and from work",
+      "userId": 1,
+      "zipCode": "32305",
+      "serviceRadius": "30",
+      "visible": true,
+      "posted": 1608804243723,
+      "id": 3
     }
   ],
   "messages": [

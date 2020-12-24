@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
-import { JobContext } from "./JobProvider";
+import { ServiceContext } from "./ServiceProvider";
 import { CategoryContext } from "../category/CategoryProvider";
 import { useHistory, useParams } from "react-router-dom";
-//import SimpleReactValidator from "simple-react-validator";
 
-export const JobForm = () => {
-  const { addJob, getJobById, editJob } = useContext(JobContext);
+export const ServiceForm = () => {
+  const { addService, getServiceById, editService } = useContext(
+    ServiceContext
+  );
   const { categories, getCategories } = useContext(CategoryContext);
 
-  const [job, setJob] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [service, setService] = useState({});
   const [checked, setChecked] = useState(true);
   const handleClick = () => {
     if (checked === true) {
@@ -19,64 +19,61 @@ export const JobForm = () => {
     }
   };
 
-  const { jobId } = useParams();
+  const { serviceId } = useParams();
   const history = useHistory();
 
   const handleControlledInputChange = (event) => {
-    const newJob = { ...job };
-    newJob[event.target.name] = event.target.value;
-    setJob(newJob);
+    const newService = { ...service };
+    newService[event.target.name] = event.target.value;
+    setService(newService);
   };
 
-  const handleJob = () => {
-    if (job.jobCategoryId === "0") {
-      window.alert("Please select a job category");
+  const handleService = () => {
+    if (service.jobCategoryId === "0") {
+      window.alert("Please select a service category");
     } else {
-      if (jobId) {
-        //setIsLoading(true);
-        editJob({
-          id: jobId,
-          title: job.title,
-          jobCategoryId: job.jobCategoryId,
-          pay: job.pay,
-          details: job.details,
-          userId: localStorage.getItem("user"),
-          zipCode: job.zipCode,
+      if (serviceId) {
+        editService({
+          id: serviceId,
+          title: service.title,
+          jobCategoryId: service.jobCategoryId,
+          price: service.price,
+          details: service.details,
+          userId: parseInt(localStorage.getItem("user")),
+          zipCode: service.zipCode,
+          serviceRadius: service.serviceRadius,
           visible: checked,
           posted: Date.now(),
-        }).then(() => history.push("/"));
+        }).then(() => history.push("/services"));
       } else {
-        //POST - add
-        addJob({
-          title: job.title,
-          jobCategoryId: job.jobCategoryId,
-          pay: job.pay,
-          details: job.details,
-          userId: 1,
-          zipCode: job.zipCode,
+        addService({
+          title: service.title,
+          jobCategoryId: service.jobCategoryId,
+          price: service.price,
+          details: service.details,
+          userId: parseInt(localStorage.getItem("user")),
+          zipCode: service.zipCode,
+          serviceRadius: service.serviceRadius,
           visible: checked,
           posted: Date.now(),
-        }).then(() => history.push("/"));
+        }).then(() => history.push("/services"));
       }
     }
   };
 
   useEffect(() => {
     getCategories().then(() => {
-      if (jobId) {
-        getJobById(jobId).then((job) => {
-          setJob(job);
-          setIsLoading(false);
+      if (serviceId) {
+        getServiceById(serviceId).then((service) => {
+          setService(service);
         });
-      } else {
-        setIsLoading(true);
       }
     });
   }, []);
 
   return (
     <div className="container">
-      <h4>{jobId ? <>Edit Job</> : <>Add New Job</>}</h4>
+      <h4>{serviceId ? <>Edit Service</> : <>Add New Service</>}</h4>
       <form>
         <div className="row">
           <div className="six columns">
@@ -84,10 +81,10 @@ export const JobForm = () => {
             <input
               onChange={handleControlledInputChange}
               type="text"
-              id="jobTitle"
+              id="serviceTitle"
               name="title"
               maxLength="50"
-              value={job.title}
+              value={service.title}
               required
               autoFocus
             />
@@ -99,7 +96,7 @@ export const JobForm = () => {
               onClick={handleClick}
               name="jobCategoryId"
               id="jobCatelory"
-              value={job.jobCategoryId}
+              value={service.jobCategoryId}
               required
             >
               <option value="0">Select a Catelory</option>
@@ -113,14 +110,14 @@ export const JobForm = () => {
         </div>
         <div className="row">
           <div className="four columns">
-            <label htmlFor="">Pay</label>
+            <label htmlFor="">Price</label>
             <input
               onChange={handleControlledInputChange}
               type="text"
-              id="jobPay"
-              name="pay"
+              id="servicePrice"
+              name="price"
               maxLength="50"
-              value={job.pay}
+              value={service.price}
               required
               autoFocus
             />
@@ -129,11 +126,24 @@ export const JobForm = () => {
             <label htmlFor="">Zip Code</label>
             <input
               onChange={handleControlledInputChange}
-              type="text"
+              type="number"
               id="zipCode"
               name="zipCode"
               maxLength="5"
-              value={job.zipCode}
+              value={service.zipCode}
+              required
+              autoFocus
+            />
+          </div>
+          <div className="four columns">
+            <label htmlFor="">Service Radius</label>
+            <input
+              onChange={handleControlledInputChange}
+              type="number"
+              id="serviceRadius"
+              name="serviceRadius"
+              maxLength="6"
+              value={service.serviceRadius}
               required
               autoFocus
             />
@@ -155,19 +165,19 @@ export const JobForm = () => {
           <textarea
             onChange={handleControlledInputChange}
             className="u-full-width"
-            placeholder="Decription of job"
+            placeholder="Decription of service"
             id="details"
             name="details"
-            value={job.details}
+            value={service.details}
             required
           ></textarea>
         </div>
         <input
           //disabled={isLoading}
           onClick={(event) => {
-            if (job.title && job.pay && job.zipCode) {
+            if (service.title && service.price && service.zipCode) {
               event.preventDefault();
-              handleJob();
+              handleService();
             }
           }}
           className="button-primary"

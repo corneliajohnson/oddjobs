@@ -10,6 +10,7 @@ import { DeleteService } from "./DeleteService";
 export const ServiceList = () => {
   const { services, getServices } = useContext(ServiceContext);
   const [visibleServices, setVisibleServices] = useState([]);
+  const currentUser = localStorage.getItem("user");
 
   const history = useHistory();
 
@@ -29,6 +30,17 @@ export const ServiceList = () => {
     <div>
       <div className="service_header">
         <h2>Services</h2>
+        <button
+          onClick={() => {
+            if (currentUser) {
+              history.push("/services/create");
+            } else {
+              history.push("/login");
+            }
+          }}
+        >
+          Add Service
+        </button>
       </div>
       <div className="services">
         <table className="u-full-width">
