@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { JobContext } from "./JobProvider";
 import { Job } from "./Job";
+import { JobSearch } from "./JobSearch";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -9,8 +10,10 @@ import { DeleteJob } from "./DeleteJob";
 import "./Job.css";
 
 export const JobList = () => {
-  const { jobs, getJobs } = useContext(JobContext);
+  const { jobs, getJobs, searchTerms } = useContext(JobContext);
   const [visibleJobs, setVisibleJobs] = useState([]);
+  const [filteredJobs, setFiltered] = useState([]);
+
   const currentUser = localStorage.getItem("user");
 
   const history = useHistory();
@@ -25,10 +28,25 @@ export const JobList = () => {
     setVisibleJobs(filteredVisibleJobs);
   }, [jobs]);
 
+  // useEffect dependency array with dependencies - will run if dependency changes (state)
+  // searchTerms will cause a change
+  useEffect(() => {
+    if (searchTerms !== "") {
+      //if blank show all
+      const subset = visibleJobs.filter((job) =>
+        job.title.toLowerCase().includes(searchTerms)
+      );
+      setFiltered(subset);
+    } else {
+      setFiltered(visibleJobs);
+    }
+  }, [jobs, searchTerms, visibleJobs]);
+
   return (
     <div className="container">
       <div className="jobs-header">
         <h2>Open Jobs</h2>
+        <JobSearch />
         <button
           onClick={() => {
             if (currentUser) {
@@ -53,7 +71,7 @@ export const JobList = () => {
             </tr>
           </thead>
           <tbody>
-            {visibleJobs.map((job) => (
+            {filteredJobs.map((job) => (
               <Job
                 key={job.id}
                 job={job}

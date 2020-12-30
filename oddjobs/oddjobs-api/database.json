@@ -63,12 +63,12 @@
       "title": "Pressure Wash",
       "jobCategoryId": 1,
       "price": "400",
-      "details": "20 foot driveway",
+      "details": "20 ft driveway",
       "userId": 1,
       "zipCode": 34356,
       "serviceRadius": 15,
       "visible": true,
-      "posted": 1603230282542
+      "posted": 1609345937517
     },
     {
       "id": 3,
