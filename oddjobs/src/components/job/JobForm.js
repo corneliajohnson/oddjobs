@@ -37,11 +37,11 @@ export const JobForm = () => {
         editJob({
           id: jobId,
           title: job.title,
-          jobCategoryId: job.jobCategoryId,
+          jobCategoryId: parseInt(job.jobCategoryId),
           pay: job.pay,
           details: job.details,
           userId: localStorage.getItem("user"),
-          zipCode: job.zipCode,
+          zipCode: parseInt(job.zipCode),
           visible: checked,
           posted: Date.now(),
         }).then(() => history.push("/"));
@@ -49,11 +49,11 @@ export const JobForm = () => {
         //POST - add
         addJob({
           title: job.title,
-          jobCategoryId: job.jobCategoryId,
+          jobCategoryId: parseInt(job.jobCategoryId),
           pay: job.pay,
           details: job.details,
           userId: 1,
-          zipCode: job.zipCode,
+          zipCode: parseInt(job.zipCode),
           visible: checked,
           posted: Date.now(),
         }).then(() => history.push("/"));

@@ -14,7 +14,7 @@
     {
       "id": 2,
       "title": "Build A Website",
-      "jobCategoryId": "32",
+      "jobCategoryId": 32,
       "pay": "$15/hr",
       "details": "Build a website for my lawn service",
       "userId": 1,

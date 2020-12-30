@@ -15,9 +15,10 @@ export const FilterForm = () => {
     getCategories();
   }, []);
 
-  const jobCategoryId = useRef(null);
-  const zipCode = useRef(null);
-  const radius = useRef(null);
+  //use let so the inputs can
+  let jobCategoryId = useRef(null);
+  let zipCode = useRef(null);
+  let radius = useRef(null);
 
   //only show visable jobs
   useEffect(() => {
@@ -30,7 +31,14 @@ export const FilterForm = () => {
     const zip = zipCode.current.value;
     // const radiusMiles = radius.current.value;
 
-    if (categoryId !== "0" && categoryId !== 0) {
+    if (categoryId !== "0" && categoryId !== 0 && zip.length == 5) {
+      const subset = visibleJobs.filter(
+        //check for category and zipcode
+        (job) =>
+          job.jobCategoryId === categoryId && job.zipCode === parseInt(zip)
+      );
+      setFilteredSearch(subset);
+    } else if (categoryId !== "0" && categoryId !== 0) {
       const subset = visibleJobs.filter(
         //check for category only
         (job) => job.jobCategoryId === categoryId
@@ -43,6 +51,13 @@ export const FilterForm = () => {
     } else {
       setFilteredSearch(visibleJobs);
     }
+  };
+
+  const resetFields = () => {
+    jobCategoryId.current.value = 0;
+    zipCode.current.value = "";
+    radius.current.value = "";
+    setFilteredSearch(visibleJobs);
   };
 
   return (
@@ -83,7 +98,14 @@ export const FilterForm = () => {
             </button>
           </div>
           <div>
-            <a href="#">Reset</a>
+            <a
+              href="#"
+              onClick={() => {
+                resetFields();
+              }}
+            >
+              Reset
+            </a>
           </div>
         </nav>
       </div>
