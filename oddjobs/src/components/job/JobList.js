@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { JobContext } from "./JobProvider";
 import { Job } from "./Job";
 import { JobSearch } from "./JobSearch";
+import { JobFilter } from "./JobFilter";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -43,7 +44,7 @@ export const JobList = () => {
   }, [jobs, searchTerms, visibleJobs]);
 
   return (
-    <div className="container">
+    <div>
       <div className="jobs-header">
         <h2>Open Jobs</h2>
         <JobSearch />
@@ -59,32 +60,37 @@ export const JobList = () => {
           Add Job
         </button>
       </div>
-      <div className="jobs">
-        <table className="u-full-width">
-          <thead>
-            <tr>
-              <th>Job</th>
-              <th>Category</th>
-              <th>Pay</th>
-              <th>Location</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredJobs.map((job) => (
-              <Job
-                key={job.id}
-                job={job}
-                editBtn={
-                  <Link to={`/jobs/edit/${job.id}`}>
-                    <FontAwesomeIcon icon={faEdit} />
-                  </Link>
-                }
-                deleteBtn={<DeleteJob id={job.id} title={job.title} />}
-              />
-            ))}
-          </tbody>
-        </table>
+      <div className="jobs row">
+        <div className="nine columns">
+          <table className="u-full-width">
+            <thead>
+              <tr>
+                <th>Job</th>
+                <th>Category</th>
+                <th>Pay</th>
+                <th>Location</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredJobs.map((job) => (
+                <Job
+                  key={job.id}
+                  job={job}
+                  editBtn={
+                    <Link to={`/jobs/edit/${job.id}`}>
+                      <FontAwesomeIcon icon={faEdit} />
+                    </Link>
+                  }
+                  deleteBtn={<DeleteJob id={job.id} title={job.title} />}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="three columns">
+          <JobFilter />
+        </div>
       </div>
     </div>
   );
