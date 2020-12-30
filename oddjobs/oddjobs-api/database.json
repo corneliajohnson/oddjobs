@@ -18,7 +18,7 @@
       "pay": "$15/hr",
       "details": "Build a website for my lawn service",
       "userId": 1,
-      "zipCode": "32320",
+      "zipCode": 32320,
       "visible": true,
       "posted": 1608740360935
     },
@@ -28,7 +28,7 @@
       "pay": "60",
       "details": "Quater Acre",
       "userId": 1,
-      "zipCode": "32305",
+      "zipCode": 32305,
       "visible": false,
       "posted": 1608643002430,
       "id": 3
@@ -39,7 +39,7 @@
       "pay": "60",
       "details": "Quater Acre",
       "userId": 2,
-      "zipCode": "32305",
+      "zipCode": 32305,
       "visible": true,
       "posted": 1608643002430,
       "id": 4

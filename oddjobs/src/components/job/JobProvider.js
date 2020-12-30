@@ -4,6 +4,7 @@ export const JobContext = React.createContext();
 export const JobProvider = (props) => {
   const [jobs, setJobs] = useState([]);
   const [searchTerms, setSearchTerms] = useState("");
+  const [filteredSearch, setFilteredSearch] = useState();
 
   const getJobs = () => {
     return fetch("http://localhost:8088/jobs?_expand=jobCategory")
@@ -54,6 +55,8 @@ export const JobProvider = (props) => {
         editJob,
         searchTerms,
         setSearchTerms,
+        filteredSearch,
+        setFilteredSearch,
       }}
     >
       {props.children}

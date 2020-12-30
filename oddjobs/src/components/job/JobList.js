@@ -11,7 +11,7 @@ import { DeleteJob } from "./DeleteJob";
 import "./Job.css";
 
 export const JobList = () => {
-  const { jobs, getJobs, searchTerms } = useContext(JobContext);
+  const { jobs, getJobs, searchTerms, filteredSearch } = useContext(JobContext);
   const [visibleJobs, setVisibleJobs] = useState([]);
   const [filteredJobs, setFiltered] = useState([]);
 
@@ -34,14 +34,22 @@ export const JobList = () => {
   useEffect(() => {
     if (searchTerms !== "") {
       //if blank show all
-      const subset = visibleJobs.filter((job) =>
+      const subset = filteredSearch.filter((job) =>
         job.title.toLowerCase().includes(searchTerms)
       );
       setFiltered(subset);
+    } else if (filteredSearch != null) {
+      setFiltered(filteredSearch);
     } else {
       setFiltered(visibleJobs);
     }
   }, [jobs, searchTerms, visibleJobs]);
+
+  useEffect(() => {
+    if (filteredSearch != null) {
+      setFiltered(filteredSearch);
+    }
+  }, [filteredSearch]);
 
   return (
     <div>
