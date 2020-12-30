@@ -12,11 +12,13 @@ import { ServiceForm } from "./service/ServiceForm";
 
 export const ApplicationViews = () => (
   <>
-    <JobProvider>
-      <Route exact path="/">
-        <JobList />
-      </Route>
-    </JobProvider>
+    <CategoryProvider>
+      <JobProvider>
+        <Route exact path="/">
+          <JobList />
+        </Route>
+      </JobProvider>
+    </CategoryProvider>
 
     <CategoryProvider>
       <JobProvider>

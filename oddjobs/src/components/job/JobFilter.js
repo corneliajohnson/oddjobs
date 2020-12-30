@@ -1,38 +1,20 @@
-import React, { useContext, useState, useEffect } from "react";
-import { CategoryContext } from "../category/CategoryProvider";
+import React, { useState, useEffect } from "react";
+import { FilterForm } from "./FilterForm";
 
 export const JobFilter = () => {
-  return (
-    <div className="s-layout">
-      <div className="s-layout__sidebar">
-        <a className="s-sidebar__trigger" href="#0">
-          X
-        </a>
+  const [showResults, setShowResults] = useState(false);
 
-        <nav className="s-sidebar__nav">
-          <h6>Filters</h6>
-          <div>
-            <label htmlFor="">Category</label>
-            <select name="jobCategoryId" id="jobCatelory" required>
-              <option value="0">Select a Catelory</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="">Zip Code</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label htmlFor="">Within Miles</label>
-            <input type="number" />
-          </div>
-          <div>
-            <button>Search</button>
-          </div>
-          <div>
-            <a href="#">Reset</a>
-          </div>
-        </nav>
-      </div>
+  const onClick = () => {
+    if (showResults) {
+      setShowResults(false);
+    } else {
+      setShowResults(true);
+    }
+  };
+  return (
+    <div>
+      <input type="submit" value="Filters" onClick={onClick} />
+      {showResults ? <FilterForm /> : null}
     </div>
   );
 };
