@@ -13,7 +13,12 @@ export const JobFilter = () => {
   };
   return (
     <div>
-      <input type="submit" value="Filters" onClick={onClick} />
+      <input
+        className="filterModalBtn"
+        type="submit"
+        value="Filters"
+        onClick={onClick}
+      />
       {showResults ? <FilterForm /> : null}
     </div>
   );

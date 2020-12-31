@@ -17,7 +17,7 @@ a {
 }
 
 .jobFilters {
-  padding-left: 5em;
+  align-items: center;
 }
 
 .jobTitleLink {
@@ -44,6 +44,21 @@ a {
   color: #ff0000;
 }
 
+.resetBtn,
+.filterBtn {
+  text-align: center;
+}
+.filterModalBtn {
+  margin-left: 40%;
+}
+.s-layout {
+  margin-left: 20%;
+}
+#jobCatelory,
+#radius,
+#zipCode {
+  width: 100%;
+}
 .resetLink {
   color: #d18d34;
 }

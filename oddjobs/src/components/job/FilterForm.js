@@ -118,13 +118,18 @@ export const FilterForm = () => {
           </div>
           <div>
             <label htmlFor="">Zip Code</label>
-            <input type="text" ref={zipCode} />
+            <input type="text" id="zipCode" ref={zipCode} />
           </div>
           <div>
-            <label htmlFor="">Within Radius</label>
-            <input type="number" ref={radius} placeholder="in miles..." />
+            <label htmlFor="">Radius</label>
+            <input
+              type="number"
+              id="radius"
+              ref={radius}
+              placeholder="in miles..."
+            />
           </div>
-          <div>
+          <div className="filterBtn">
             <button
               onClick={() => {
                 handleFilters();
@@ -138,7 +143,7 @@ export const FilterForm = () => {
               Filter
             </button>
           </div>
-          <div>
+          <div className="resetBtn">
             <a
               className="resetLink"
               href="#"
