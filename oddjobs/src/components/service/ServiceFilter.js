@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FilterForm } from "./FilterForm";
+// import { FilterForm } from "./FilterForm";
 
-export const JobFilter = () => {
+export const ServiceFilter = () => {
   const [showResults, setShowResults] = useState(true);
 
   const onClick = () => {
@@ -20,7 +20,7 @@ export const JobFilter = () => {
         onClick={onClick}
       />
       {/* show filters on toggle*/}
-      {showResults ? <FilterForm /> : null}
+      {showResults ? "on" : null}
     </div>
   );
 };

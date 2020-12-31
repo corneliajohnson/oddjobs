@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { DeleteService } from "./DeleteService";
 import { ServiceSearch } from "./ServiceSearch";
+import { ServiceFilter } from "./ServiceFilter";
 import "./Service.css";
 
 export const ServiceList = () => {
@@ -95,7 +96,9 @@ export const ServiceList = () => {
             </tbody>
           </table>
         </div>
-        <div className="three columns services_filters">filters</div>
+        <div className="three columns services_filters">
+          <ServiceFilter />
+        </div>
       </div>
     </div>
   );
