@@ -71,7 +71,7 @@ export const JobList = () => {
         <JobSearch />
       </div>
       <div className="jobs row">
-        <div className="nine columns">
+        <div className="nine columns jobTable">
           <table className="u-full-width">
             <thead>
               <tr>
@@ -88,7 +88,7 @@ export const JobList = () => {
                   key={job.id}
                   job={job}
                   editBtn={
-                    <Link to={`/jobs/edit/${job.id}`}>
+                    <Link to={`/jobs/edit/${job.id}`} className="editBtn">
                       <FontAwesomeIcon icon={faEdit} />
                     </Link>
                   }
@@ -98,7 +98,7 @@ export const JobList = () => {
             </tbody>
           </table>
         </div>
-        <div className="three columns">
+        <div className="three columns jobFilters">
           <JobFilter />
         </div>
       </div>

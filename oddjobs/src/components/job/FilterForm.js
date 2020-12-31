@@ -140,6 +140,7 @@ export const FilterForm = () => {
           </div>
           <div>
             <a
+              className="resetLink"
               href="#"
               onClick={() => {
                 resetFields();

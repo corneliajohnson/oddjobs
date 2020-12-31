@@ -26,7 +26,7 @@ export const DeleteJob = (job) => {
   };
 
   return (
-    <a onClick={alert}>
+    <a className="deleteBtn" onClick={alert}>
       <FontAwesomeIcon icon={faTrash} />
     </a>
   );

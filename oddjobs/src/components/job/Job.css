@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .jobs-header {
@@ -9,4 +10,44 @@ a {
 
 .searchInput {
   width: 75%;
+}
+
+.jobs {
+  margin: 1.5em;
+}
+
+.jobFilters {
+  padding-left: 5em;
+}
+
+.jobTitleLink {
+  color: #d18d34;
+}
+
+.jobTitleLink:hover {
+  color: #000;
+}
+
+.editBtn {
+  color: #696969;
+}
+
+.deleteBtn {
+  color: #bb3f3f;
+}
+
+.editBtn:hover {
+  color: #708090;
+}
+
+.deleteBtn:hover {
+  color: #ff0000;
+}
+
+.resetLink {
+  color: #d18d34;
+}
+
+.resetLink:hover {
+  color: #000;
 }

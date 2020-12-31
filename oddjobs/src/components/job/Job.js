@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 export const Job = ({ job, editBtn, deleteBtn }) => (
   <tr>
     <td>
-      <Link to={`/jobs/detail/${job.id}`}> {job.title}</Link>
+      <Link to={`/jobs/detail/${job.id}`} className="jobTitleLink">
+        {job.title}
+      </Link>
     </td>
     <td>{job.jobCategory.name}</td>
     <td>{job.pay}</td>
