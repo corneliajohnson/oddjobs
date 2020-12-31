@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const Job = ({ job, editBtn, deleteBtn }) => (
-  <tr>
+  <tr className="jobTableRow">
     <td>
       <Link to={`/jobs/detail/${job.id}`} className="jobTitleLink">
         {job.title}

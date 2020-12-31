@@ -20,6 +20,9 @@ a {
   align-items: center;
 }
 
+.jobTableRow:hover {
+  box-shadow: 3px 3px 0.5px grey;
+}
 .jobTitleLink {
   color: #d18d34;
 }
@@ -65,4 +68,9 @@ a {
 
 .resetLink:hover {
   color: #000;
+}
+
+/* Job Detail */
+.jobDetailContainer {
+  margin-top: 20%;
 }
