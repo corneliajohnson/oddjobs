@@ -9,16 +9,19 @@ import { ServiceProvider } from "./service/ServiceProvider";
 import { ServiceList } from "./service/ServiceList";
 import { ServiceDetail } from "./service/ServiceDetail";
 import { ServiceForm } from "./service/ServiceForm";
+import { APIProvider } from "./api/APIProvider";
 
 export const ApplicationViews = () => (
   <>
-    <CategoryProvider>
-      <JobProvider>
-        <Route exact path="/">
-          <JobList />
-        </Route>
-      </JobProvider>
-    </CategoryProvider>
+    <APIProvider>
+      <CategoryProvider>
+        <JobProvider>
+          <Route exact path="/">
+            <JobList />
+          </Route>
+        </JobProvider>
+      </CategoryProvider>
+    </APIProvider>
 
     <CategoryProvider>
       <JobProvider>

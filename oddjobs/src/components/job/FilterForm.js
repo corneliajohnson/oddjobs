@@ -1,11 +1,16 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { CategoryContext } from "../category/CategoryProvider";
+import { APIContext } from "../api/APIProvider";
 import { JobContext } from "./JobProvider";
 
 export const FilterForm = () => {
   const { categories, getCategories } = useContext(CategoryContext);
-  const { setFilteredSearch, getJobs, jobs } = useContext(JobContext);
+  const { setFilteredSearch, getJobs, jobs, filteredSearch } = useContext(
+    JobContext
+  );
+  const { zipCodeRadius, getZipCodeRadius } = useContext(APIContext);
   const [visibleJobs, setVisibleJobs] = useState([]);
+  const [btnClicked, setBtnClicked] = useState(false);
 
   useEffect(() => {
     getJobs();
@@ -26,10 +31,16 @@ export const FilterForm = () => {
     setVisibleJobs(filteredVisibleJobs);
   }, [jobs]);
 
+  useEffect(() => {
+    if (zipCode.current.value != "" && radius.current.value != "") {
+      getZipCodeRadius(zipCode.current.value, radius.current.value);
+    }
+  }, [filteredSearch, btnClicked]);
+
   const handleFilters = () => {
     const categoryId = parseInt(jobCategoryId.current.value);
     const zip = zipCode.current.value;
-    // const radiusMiles = radius.current.value;
+    const radiusMiles = radius.current.value;
 
     if (categoryId !== "0" && categoryId !== 0 && zip.length == 5) {
       const subset = visibleJobs.filter(
@@ -44,10 +55,20 @@ export const FilterForm = () => {
         (job) => job.jobCategoryId === categoryId
       );
       setFilteredSearch(subset);
+    } else if (zip.length == 5 && parseInt(radiusMiles) > 0) {
+      //check for radius in miles
+      // const subset = visibleJobs.filter((job) => job.zipCode === parseInt(zip));
+      // setFilteredSearch(subset);
+      const zipCodeResponse = zipCodeRadius?.DataList;
+      const zipCodes = zipCodeResponse.map((zip) => parseInt(zip.Code));
+
+      const subset = visibleJobs.filter((job) =>
+        zipCodes.includes(job.zipCode)
+      );
+      setFilteredSearch(subset);
     } else if (zip.length == 5) {
       //check for zipcode only
-      const subset = visibleJobs.filter((job) => job.zipCode === parseInt(zip));
-      setFilteredSearch(subset);
+      console.log(zipCodeRadius);
     } else {
       setFilteredSearch(visibleJobs);
     }
@@ -92,6 +113,11 @@ export const FilterForm = () => {
             <button
               onClick={() => {
                 handleFilters();
+                if (btnClicked === false) {
+                  setBtnClicked(true);
+                } else {
+                  setBtnClicked(false);
+                }
               }}
             >
               Filter

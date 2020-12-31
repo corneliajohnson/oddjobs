@@ -17,10 +17,10 @@
       "jobCategoryId": 32,
       "pay": "$15/hr",
       "details": "Build a website for my lawn service",
-      "userId": 1,
-      "zipCode": 32320,
+      "userId": "1",
+      "zipCode": 32312,
       "visible": true,
-      "posted": 1608740360935
+      "posted": 1609372683424
     },
     {
       "title": "Grass Cut",
