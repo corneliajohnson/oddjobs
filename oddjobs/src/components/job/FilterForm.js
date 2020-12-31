@@ -42,6 +42,24 @@ export const FilterForm = () => {
     const zip = zipCode.current.value;
     const radiusMiles = radius.current.value;
 
+    if (
+      categoryId !== "0" &&
+      categoryId !== 0 &&
+      zip.length == 5 &&
+      parseInt(radiusMiles) > 0
+    ) {
+      const zipCodeResponse = zipCodeRadius?.DataList;
+      const zipCodes = zipCodeResponse.map((zip) => parseInt(zip.Code));
+
+      //all filtered
+      const subset = visibleJobs.filter(
+        (job) =>
+          zipCodes.includes(job.zipCode) &&
+          job.jobCategoryId === categoryId &&
+          job.zipCode === parseInt(zip)
+      );
+      setFilteredSearch(subset);
+    }
     if (categoryId !== "0" && categoryId !== 0 && zip.length == 5) {
       const subset = visibleJobs.filter(
         //check for category and zipcode
@@ -56,9 +74,6 @@ export const FilterForm = () => {
       );
       setFilteredSearch(subset);
     } else if (zip.length == 5 && parseInt(radiusMiles) > 0) {
-      //check for radius in miles
-      // const subset = visibleJobs.filter((job) => job.zipCode === parseInt(zip));
-      // setFilteredSearch(subset);
       const zipCodeResponse = zipCodeRadius?.DataList;
       const zipCodes = zipCodeResponse.map((zip) => parseInt(zip.Code));
 
