@@ -4,4 +4,9 @@ a {
 
 .jobs-header {
   text-align: center;
+  margin-top: 20%;
+}
+
+.searchInput {
+  width: 75%;
 }

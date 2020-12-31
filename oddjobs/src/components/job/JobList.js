@@ -55,18 +55,20 @@ export const JobList = () => {
     <div>
       <div className="jobs-header">
         <h2>Open Jobs</h2>
+        <div>
+          <button
+            onClick={() => {
+              if (currentUser) {
+                history.push("/jobs/create");
+              } else {
+                history.push("/login");
+              }
+            }}
+          >
+            Add Job
+          </button>
+        </div>
         <JobSearch />
-        <button
-          onClick={() => {
-            if (currentUser) {
-              history.push("/jobs/create");
-            } else {
-              history.push("/login");
-            }
-          }}
-        >
-          Add Job
-        </button>
       </div>
       <div className="jobs row">
         <div className="nine columns">

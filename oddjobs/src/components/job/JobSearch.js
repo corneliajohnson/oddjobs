@@ -8,7 +8,7 @@ export const JobSearch = () => {
     <>
       <input
         type="text"
-        className="input--wide"
+        className="input--wide searchInput"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
         placeholder="Search for jobs... "
       />

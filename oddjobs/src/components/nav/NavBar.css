@@ -7,8 +7,9 @@
   top: 0; /* Position the navbar at the top of the page */
   left: 0;
   width: 100%; /* Full width */
-  background-color: #d18d34;
   padding: 1em;
+  border-bottom: 1px black solid;
+  background-color: white;
 }
 
 .navbar__item {
@@ -18,10 +19,10 @@
 }
 
 .navbar__link {
-  color: #fff;
+  color: #000;
 }
 
 .navbar__link:hover {
-  color: #fff;
+  color: #000;
   font-weight: bold;
 }
