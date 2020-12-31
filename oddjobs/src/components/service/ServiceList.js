@@ -10,8 +10,9 @@ import { ServiceSearch } from "./ServiceSearch";
 import "./Service.css";
 
 export const ServiceList = () => {
-  const { services, getServices } = useContext(ServiceContext);
+  const { services, getServices, searchTerms } = useContext(ServiceContext);
   const [visibleServices, setVisibleServices] = useState([]);
+  const [filteredJobs, setFiltered] = useState([]);
   const currentUser = localStorage.getItem("user");
 
   const history = useHistory();
@@ -27,6 +28,21 @@ export const ServiceList = () => {
     );
     setVisibleServices(filteredVisibleServices);
   }, [services]);
+
+  // useEffect dependency array with dependencies - will run if dependency changes (state)
+  // searchTerms will cause a change
+  useEffect(() => {
+    if (searchTerms !== "") {
+      // If the search field is not blank, display matching services
+      const subset = visibleServices.filter((service) =>
+        service.title.toLowerCase().includes(searchTerms)
+      );
+      setFiltered(subset);
+    } else {
+      // If the search field is blank, display all services
+      setFiltered(visibleServices);
+    }
+  }, [searchTerms, services, visibleServices]);
 
   return (
     <div>
@@ -60,7 +76,7 @@ export const ServiceList = () => {
               </tr>
             </thead>
             <tbody>
-              {visibleServices.map((service) => {
+              {filteredJobs.map((service) => {
                 return (
                   <Service
                     key={service.id}
