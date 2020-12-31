@@ -10,7 +10,7 @@ export const JobDetail = () => {
 
   useEffect(() => {
     getJobById(jobId).then((response) => {
-      setJob(response);
+      setJob(response); //set selected job
     });
   }, []);
 
