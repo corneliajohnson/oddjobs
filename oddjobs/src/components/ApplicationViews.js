@@ -47,15 +47,17 @@ export const ApplicationViews = () => (
       </JobProvider>
     </CategoryProvider>
 
-    <CategoryProvider>
-      <ServiceProvider>
-        <CategoryProvider>
-          <Route exact path="/services">
-            <ServiceList />
-          </Route>
-        </CategoryProvider>
-      </ServiceProvider>
-    </CategoryProvider>
+    <APIProvider>
+      <CategoryProvider>
+        <ServiceProvider>
+          <CategoryProvider>
+            <Route exact path="/services">
+              <ServiceList />
+            </Route>
+          </CategoryProvider>
+        </ServiceProvider>
+      </CategoryProvider>
+    </APIProvider>
 
     <ServiceProvider>
       <CategoryProvider>

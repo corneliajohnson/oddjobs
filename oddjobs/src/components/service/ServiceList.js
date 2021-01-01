@@ -11,7 +11,9 @@ import { ServiceFilter } from "./ServiceFilter";
 import "./Service.css";
 
 export const ServiceList = () => {
-  const { services, getServices, searchTerms } = useContext(ServiceContext);
+  const { services, getServices, searchTerms, filteredSearch } = useContext(
+    ServiceContext
+  );
   const [visibleServices, setVisibleServices] = useState([]);
   const [filteredJobs, setFiltered] = useState([]);
   const currentUser = localStorage.getItem("user");
@@ -39,11 +41,19 @@ export const ServiceList = () => {
         service.title.toLowerCase().includes(searchTerms)
       );
       setFiltered(subset);
+    } else if (filteredSearch != null) {
+      setFiltered(filteredSearch);
     } else {
       // If the search field is blank, display all services
       setFiltered(visibleServices);
     }
   }, [searchTerms, services, visibleServices]);
+
+  useEffect(() => {
+    if (filteredSearch != null) {
+      setFiltered(filteredSearch);
+    }
+  }, [filteredSearch]);
 
   return (
     <div>

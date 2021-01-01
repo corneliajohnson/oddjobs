@@ -4,6 +4,7 @@ export const ServiceContext = React.createContext();
 export const ServiceProvider = (props) => {
   const [services, setServices] = useState([]);
   const [searchTerms, setSearchTerms] = useState("");
+  const [filteredSearch, setFilteredSearch] = useState();
 
   const getServices = () => {
     return fetch("http://localhost:8088/services?_expand=jobCategory")
@@ -54,6 +55,8 @@ export const ServiceProvider = (props) => {
         editService,
         searchTerms,
         setSearchTerms,
+        filteredSearch,
+        setFilteredSearch,
       }}
     >
       {props.children}
