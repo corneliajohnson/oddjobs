@@ -140,24 +140,24 @@ export const FilterForm = () => {
           <div className="filterBtn">
             <button
               onClick={() => {
-                // if (
-                //   parseInt(radius.current.value) > 0 &&
-                //   zipCode.current.value == ""
-                // ) {
-                //   alert("Enter zipcode to find radius");
-                // } else if (
-                //   parseInt(radius.current.value) < 1 ||
-                //   parseInt(radius.current.value) < 200
-                // ) {
-                //   alert("Radius must be between 1 and 200 miles");
-                // } else {
-                handleFilters();
-                //}
-                //btn toggle for radius useEffect
-                if (btnClicked === false) {
-                  setBtnClicked(true);
+                if (
+                  parseInt(radius.current.value) > 0 &&
+                  zipCode.current.value == ""
+                ) {
+                  alert("Enter zipcode to find radius");
+                } else if (
+                  parseInt(radius.current.value) < 1 ||
+                  parseInt(radius.current.value) > 200
+                ) {
+                  alert("Radius must be between 1 and 200 miles");
                 } else {
-                  setBtnClicked(false);
+                  //btn toggle for radius useEffect
+                  if (btnClicked === false) {
+                    setBtnClicked(true);
+                  } else {
+                    setBtnClicked(false);
+                  }
+                  handleFilters();
                 }
               }}
             >

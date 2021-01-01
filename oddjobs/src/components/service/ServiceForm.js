@@ -36,24 +36,24 @@ export const ServiceForm = () => {
         editService({
           id: serviceId,
           title: service.title,
-          jobCategoryId: service.jobCategoryId,
+          jobCategoryId: parseInt(service.jobCategoryId),
           price: service.price,
           details: service.details,
           userId: parseInt(localStorage.getItem("user")),
-          zipCode: service.zipCode,
-          serviceRadius: service.serviceRadius,
+          zipCode: parseInt(service.zipCode),
+          serviceRadius: parseInt(service.serviceRadius),
           visible: checked,
           posted: Date.now(),
         }).then(() => history.push("/services"));
       } else {
         addService({
           title: service.title,
-          jobCategoryId: service.jobCategoryId,
+          jobCategoryId: parseInt(service.jobCategoryId),
           price: service.price,
           details: service.details,
           userId: parseInt(localStorage.getItem("user")),
-          zipCode: service.zipCode,
-          serviceRadius: service.serviceRadius,
+          zipCode: parseInt(service.zipCode),
+          serviceRadius: parseInt(service.serviceRadius),
           visible: checked,
           posted: Date.now(),
         }).then(() => history.push("/services"));
