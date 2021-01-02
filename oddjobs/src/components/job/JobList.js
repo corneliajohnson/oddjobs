@@ -34,7 +34,7 @@ export const JobList = () => {
   useEffect(() => {
     if (searchTerms !== "") {
       //if blank show all
-      const subset = filteredSearch.filter((job) =>
+      const subset = visibleJobs.filter((job) =>
         job.title.toLowerCase().includes(searchTerms)
       );
       setFiltered(subset);
