@@ -1,15 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserProvider";
+import { UserPostCard } from "./UserPostCard";
 
 export const UserAccount = () => {
   const { getUserById } = useContext(UserContext);
   const [user, setUser] = useState({});
+  const [jobs, setJobs] = useState([]);
+  const [services, setServices] = useState([]);
 
   const currentUser = localStorage.getItem("user");
 
   useEffect(() => {
     getUserById(currentUser).then((response) => {
       setUser(response);
+      setJobs(response.jobs);
+      setServices(response.services);
     });
   }, []);
 
@@ -32,7 +37,17 @@ export const UserAccount = () => {
       </div>
       <div className="row">
         <div>
-          <h3>My Post</h3>
+          <h3>My Activity</h3>
+          <div>
+            {jobs?.map((job) => (
+              <UserPostCard key={job.id} post={job} />
+            ))}
+          </div>
+          <div>
+            {services?.map((service) => (
+              <UserPostCard key={service.id} post={service} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
