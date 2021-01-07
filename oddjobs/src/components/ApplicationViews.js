@@ -10,6 +10,8 @@ import { ServiceList } from "./service/ServiceList";
 import { ServiceDetail } from "./service/ServiceDetail";
 import { ServiceForm } from "./service/ServiceForm";
 import { APIProvider } from "./api/APIProvider";
+import { UserProvider } from "./user/UserProvider";
+import { UserAccount } from "./user/UserAccount";
 
 export const ApplicationViews = () => (
   <>
@@ -82,5 +84,11 @@ export const ApplicationViews = () => (
         </Route>
       </CategoryProvider>
     </ServiceProvider>
+
+    <UserProvider>
+      <Route exact path="/account">
+        <UserAccount />
+      </Route>
+    </UserProvider>
   </>
 );
