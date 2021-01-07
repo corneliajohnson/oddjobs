@@ -21,8 +21,8 @@ export const UserAccount = () => {
   return (
     <div className="container" style={{ marginTop: "7em" }}>
       <div className="row">
-        <div className="one-half column">Image</div>
-        <div className="one-half column">
+        <div className="col-6">Image</div>
+        <div className="col-6">
           <div className="card">
             <div className="card-body">
               <div className="card-text">
@@ -39,11 +39,17 @@ export const UserAccount = () => {
         <div>
           <h3>My Activity</h3>
           <div>
+            <h6>Jobs</h6>
+          </div>
+          <div className="row">
             {jobs?.map((job) => (
               <UserPostCard key={job.id} post={job} />
             ))}
           </div>
           <div>
+            <h6>Services</h6>
+          </div>
+          <div className="row">
             {services?.map((service) => (
               <UserPostCard key={service.id} post={service} />
             ))}
