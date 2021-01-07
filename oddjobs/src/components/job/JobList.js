@@ -71,7 +71,7 @@ export const JobList = () => {
         <JobSearch />
       </div>
       <div className="jobs row">
-        <div className="nine columns jobTable">
+        <div className="col-9 jobTable">
           <table className="u-full-width">
             <thead>
               <tr>
@@ -98,7 +98,7 @@ export const JobList = () => {
             </tbody>
           </table>
         </div>
-        <div className="three columns jobFilters">
+        <div className="col-3 jobFilters">
           <JobFilter />
         </div>
       </div>

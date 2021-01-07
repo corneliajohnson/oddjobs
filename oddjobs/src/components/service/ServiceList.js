@@ -75,7 +75,7 @@ export const ServiceList = () => {
         </div>
       </div>
       <div className="row">
-        <div className="services nine columns">
+        <div className="services col-9">
           <table className="u-full-width">
             <thead>
               <tr>
@@ -106,7 +106,7 @@ export const ServiceList = () => {
             </tbody>
           </table>
         </div>
-        <div className="three columns services_filters">
+        <div className="col-3 services_filters">
           <ServiceFilter />
         </div>
       </div>
